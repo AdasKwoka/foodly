@@ -11,6 +11,7 @@ import Categories from '../components/Categories';
 import FeaturedRow from '../components/FeaturedRow';
 import sanityClient from '../sanity';
 import { homePageQuery } from '../queries';
+import { isAndroid } from 'react-native-device-detection'
 
 const HomeScreen = () => {
   const navigation = useNavigation()
@@ -28,7 +29,7 @@ const HomeScreen = () => {
   }, [])
 
   return (
-    <SafeAreaView className="bg-white pt-5">  
+    <SafeAreaView className={`bg-white ${isAndroid ? "pt-12" : "pt-5"}`}>  
       <View className="flex-row pb-3 items-center mx-4 space-x-2">
         <Image 
           source={{
@@ -64,6 +65,7 @@ const HomeScreen = () => {
             description={featureCategory.short_description}
           />
         ))}
+        <View className="pb-28"></View>
       </ScrollView>
     </SafeAreaView>
   )

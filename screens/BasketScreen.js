@@ -7,6 +7,7 @@ import { selectRestaurant } from '../features/restaurantSlice'
 import { XCircleIcon } from 'react-native-heroicons/solid'
 import { urlFor } from '../sanity'
 import Currency from 'react-currency-formatter'
+import { isAndroid } from 'react-native-device-detection'
 
 const BasketScreen = () => {
   const navigation = useNavigation()
@@ -26,7 +27,7 @@ const BasketScreen = () => {
   }, [items])
 
   return (
-    <SafeAreaView className="flex-1 bg-white">
+    <SafeAreaView className={`flex-1 bg-white ${isAndroid ? "pt-12" : ""}`}>
       <View className="flex-1 bg-gray-100">
         <View className="p-5 border-b border-[#00CCBB] bg-white shadow-xs">
           <View>
