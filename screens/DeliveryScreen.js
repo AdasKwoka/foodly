@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { selectRestaurant } from '../features/restaurantSlice'
 import { XMarkIcon } from 'react-native-heroicons/solid'
 import * as Progress from "react-native-progress"
+import { isAndroid } from 'react-native-device-detection'
 
 const DeliveryScreen = () => {
   const navigation = useNavigation()
@@ -14,7 +15,7 @@ const DeliveryScreen = () => {
   return (
     <View className="bg-[#00CCBB] flex-1">
       <SafeAreaView className="z-50">
-        <View className="flex-row justify-between items-center p-5">
+        <View className={`flex-row justify-between items-center p-5 ${isAndroid ? "pt-8" : ""}`}>
           <TouchableOpacity onPress={() => navigation.navigate("Home")}>
             <XMarkIcon color="white" size={30} />
           </TouchableOpacity>
